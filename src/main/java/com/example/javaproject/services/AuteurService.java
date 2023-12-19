@@ -1,12 +1,11 @@
-package com.example.livrespirngboot.services;
+package com.example.javaproject.services;
 
-import com.example.livrespirngboot.entity.AuteurEntity;
-import com.example.livrespirngboot.repositories.AuteurRepository;
+import com.example.javaproject.entity.AuteurEntity;
+import com.example.javaproject.repositories.AuteurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class AuteurService {

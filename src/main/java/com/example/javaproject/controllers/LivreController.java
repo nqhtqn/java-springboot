@@ -1,9 +1,9 @@
-package com.example.livrespirngboot.controllers;
+package com.example.javaproject.controllers;
 
-import com.example.livrespirngboot.entity.AuteurEntity;
-import com.example.livrespirngboot.entity.LivreEntity;
-import com.example.livrespirngboot.services.AuteurService;
-import com.example.livrespirngboot.services.LivreService;
+import com.example.javaproject.entity.AuteurEntity;
+import com.example.javaproject.entity.LivreEntity;
+import com.example.javaproject.services.AuteurService;
+import com.example.javaproject.services.LivreService;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,8 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Supplier;
 
 @Controller
 @Log

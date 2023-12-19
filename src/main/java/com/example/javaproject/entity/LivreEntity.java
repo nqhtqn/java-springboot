@@ -1,4 +1,4 @@
-package com.example.livrespirngboot.entity;
+package com.example.javaproject.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

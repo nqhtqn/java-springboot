@@ -1,6 +1,6 @@
-package com.example.livrespirngboot.repositories;
+package com.example.javaproject.repositories;
 
-import com.example.livrespirngboot.entity.LivreEntity;
+import com.example.javaproject.entity.LivreEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

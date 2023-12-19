@@ -17,7 +17,7 @@
         <!-- J'utiliser le formulaire de spring boot qui va créer un objet livreEntity pour moi-->
         <!-- modelAttribute est associé à l'objet vide que j'ai envoyé depuis le controller-->
 
-        <%--@elvariable id="nouveauLivre" type="com.example.livrespirngboot.entity.LivreEntity"--%>
+        <%--@elvariable id="nouveauLivre" type="com.example.javaproject.entity.LivreEntity"--%>
         <form:form action="/ajoutlivre" method="post" modelAttribute="nouveauLivre">
             <div class="mb-3">
                 <label for="titre" class="form-label">Title: </label>

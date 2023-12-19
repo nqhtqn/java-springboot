@@ -1,7 +1,7 @@
-package com.example.livrespirngboot.services;
+package com.example.javaproject.services;
 
-import com.example.livrespirngboot.entity.LivreEntity;
-import com.example.livrespirngboot.repositories.LivreRepository;
+import com.example.javaproject.entity.LivreEntity;
+import com.example.javaproject.repositories.LivreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
