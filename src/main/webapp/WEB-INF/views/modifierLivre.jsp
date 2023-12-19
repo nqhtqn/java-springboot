@@ -17,7 +17,7 @@
             <!-- modelAttribute est associé à livreAModifier que j'ai envoyé depuis le controller.
             Ça va aussi mettre les valeurs du livreAModifier dans les champs-->
 
-            <%--@elvariable id="livreAModifier" type="com.example.javaproject.entity.LivreEntity"--%>
+            <%--@elvariable id="livreAModifier" type="com.example.javaproject.entity.TacheEntity"--%>
             <form:form action="/modiflivres/${livreAModifier.id}" method="post" modelAttribute="livreAModifier">
                 <div class="mb-3">
                     <label for="titre" class="form-label">Title: </label>

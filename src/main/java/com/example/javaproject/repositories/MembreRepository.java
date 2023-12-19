@@ -1,9 +1,9 @@
 package com.example.javaproject.repositories;
 
-import com.example.javaproject.entity.AuteurEntity;
+import com.example.javaproject.entity.MembreEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface AuteurRepository extends CrudRepository<AuteurEntity, Long> {
+public interface MembreRepository extends CrudRepository<MembreEntity, Long> {
 }

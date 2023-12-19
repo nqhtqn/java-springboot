@@ -7,27 +7,28 @@ import lombok.Setter;
 import java.util.List;
 
 @Entity
-@Table(name = "auteur")
+@Table(name = "membre")
 @Setter
 @Getter
-public class AuteurEntity {
+public class MembreEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long idAuteur;
-
+    private Long idMembre;
     private String nom;
     private String prenom;
+    private String equipe;
 
-    @OneToMany(mappedBy = "auteur")
-    private List<LivreEntity> books;
+    @OneToMany(mappedBy = "membre")
+    private List<TacheEntity> tasks;
 
 
     @Override
     public String toString() {
-        return "AuteurEntity{" +
-                "idAuteur=" + idAuteur +
+        return "MembreEntity{" +
+                "idMembre=" + idMembre +
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
+                ", equipe='" + equipe + '\'' +
                 '}';
     }
 }
