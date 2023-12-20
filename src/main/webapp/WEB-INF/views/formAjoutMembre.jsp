@@ -8,3 +8,8 @@
     <label for="prenom" class="form-label">Prénom du nouveau membre:</label>
     <input type="text" id="prenom" name="prenom" class="form-control" <c:if test='${empty membres}'>required="true"</c:if>/>
 </div>
+
+<div class="mb-3">
+    <label for="equipe" class="form-label">Equipe du nouveau membre:</label>
+    <input type="text" id="equipe" name="equipe" class="form-control" <c:if test='${empty membres}'>required="true"</c:if>/>
+</div>
