@@ -6,10 +6,10 @@
                     <a class="nav-link active" aria-current="page" href="/">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/ajoutlivre">Ajouter Livre</a>
+                    <a class="nav-link" href="/ajouttache">Ajouter une tâche</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/livres">Liste de Livres</a>
+                    <a class="nav-link" href="/taches">Liste des tâches</a>
                 </li>
             </ul>
         </div>

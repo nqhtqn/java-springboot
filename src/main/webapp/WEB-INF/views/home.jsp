@@ -4,7 +4,7 @@
 <body>
 <%@include file="menu.jsp"%>
 <div class="container">
-    <h2>Hello Bienvenu dans ma page de gestion de livres!</h2>
+    <h2>Système de gestion de tâches</h2>
 </div>
 
 </body>

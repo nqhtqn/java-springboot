@@ -1,37 +1,30 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-
 <html>
-    <!-- Apple du fichier head qui est commun à toutes les pages-->
     <%@include file="head.jsp"%>
 
 <body>
-
-    <!-- Apple du menu qui est commun à toutes les pages-->
     <%@include file="menu.jsp"%>
 
-
-
     <div class="container">
-        <h1>Liste de livres</h1>
-
+        <h1>Liste des tâches</h1>
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">Livre</th>
+                <th scope="col">Tâches</th>
                 <th scope="col">Actions</th>
             </tr>
             </thead>
             <tbody>
-                <c:forEach var="livre" items="${livres}" varStatus="loop">
+                <c:forEach var="tache" items="${taches}" varStatus="loop">
                     <tr>
                         <td>
-                            <a href="/detail/${livre.id}"> ${livre.getTitre()} - ${livre.getAnnee()}</a>
+                            <a href="/detail/${tache.id}"> ${tache.getTitre()} - ${tache.getDateDebut()}</a>
                         </td>
                         <td>
-                            <a href="/supplivres/${livre.id}" style="padding-right: 20px;">Supprimer</a>
-                            <a href="/modiflivres/${livre.id}">Modifier</a>
+                            <a href="/supptache/${tache.id}" style="padding-right: 20px;">Supprimer</a>
+                            <a href="/modiftache/${tache.id}">Modifier</a>
                         </td>
                     </tr>
                 </c:forEach>
