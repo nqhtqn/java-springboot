@@ -1,0 +1,79 @@
+body {
+    font-family: sans-serif;
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+h1 {
+    margin-top: 0px;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 5px;
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+
+th {
+    background-color: #eee;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+}
+
+a:hover {
+    color: #333;
+}
+
+img {
+    width: 20px;
+    height: 20px;
+}
+
+.table {
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+/* CSS pour l'image de la page */
+.image-container {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.image {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 5px;
+}
+
+/* CSS pour ajouter une bordure en pointillé aux boutons d'action */
+.action-button {
+    border: 1px dashed #ccc;
+    padding: 10px;
+    font-size: 16px;
+    font-family: "Roboto", sans-serif;
+}
+
+/* CSS pour ajouter une ombre aux boutons d'action */
+.action-button:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
