@@ -48,7 +48,7 @@
                         <%--@elvariable id="membres" type="java.util.List"--%>
                         <form:select class="form-select" path="membre.idMembre">
                             <c:forEach var="membre" items="${membres}" varStatus="loop">
-                                <form:option value="${membre.idMembre}" label="${membre.nom} ${membre.prenom}" />
+                                <form:option value="${membre.idMembre}" label="${membre.prenom} ${membre.nom}" />
                             </c:forEach>
                         </form:select>
                     </div>

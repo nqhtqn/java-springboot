@@ -41,10 +41,10 @@
 
             </div>
             <div class="card-footer text-body-secondary">
-                Date de début : ${tache.date_debut}
+                Membre : ${tache.membre.prenom} ${tache.membre.nom} de l'équipe ${tache.membre.equipe} | Date de début : ${tache.date_debut}
             </div>
         </div><br>
-        <a href="/taches"><button type="button" class="btn btn-primary">Retour à la liste</button></a>
+        <a href="/taches"><button type="button" class="btn btn-secondary">Retour à la liste</button></a>
     </div>
 </body>
 </html>

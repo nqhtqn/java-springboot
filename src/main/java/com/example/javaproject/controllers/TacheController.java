@@ -84,6 +84,20 @@ public class TacheController {
         return "redirect:/taches"; //redirige vers les taches
     }
 
+    // Affiche le formulaire d'ajout d'un membre
+    @GetMapping("/ajoutmembre")
+    public String ajoutMembreFormulaire(Model model){
+        model.addAttribute("nouveauMembre", new MembreEntity()); //envoie vers le jsp
+        return "ajouterMembre"; //appel du fichier jsp
+    }
+
+    // Ajouter un membre dans la base
+    @PostMapping("/ajoutmembre")
+    public String ajouterMembre(@ModelAttribute MembreEntity nouveauMembre){
+        membreService.ajouterMembre(nouveauMembre); //ajoute tache dans la base de données
+        return "redirect:/"; //redirige vers les taches
+    }
+
     // Affiche les détails d'une tache
     @GetMapping("/detail/{id}")
     public String detailTache(@PathVariable("id") Long id, Model model){
@@ -97,6 +111,13 @@ public class TacheController {
         TacheEntity tache = tacheService.recupereTache(id);
         tache.setEtat("En cours");
         tacheService.ajouterTache(tache);
+        NotificationEntity nouvelleNotif = new NotificationEntity();
+        nouvelleNotif.setType("Statut");
+        nouvelleNotif.setTexte("Passage du statut en 'En cours' pour la tâche n°"+id);
+        nouvelleNotif.setVu("Non");
+        nouvelleNotif.setTache(tache);
+        nouvelleNotif.setMembre(tache.getMembre());
+        notificationService.ajouterNotification(nouvelleNotif);
         return "redirect:/";
     }
 
@@ -105,6 +126,13 @@ public class TacheController {
         TacheEntity tache = tacheService.recupereTache(id);
         tache.setEtat("En pause");
         tacheService.ajouterTache(tache);
+        NotificationEntity nouvelleNotif = new NotificationEntity();
+        nouvelleNotif.setType("Statut");
+        nouvelleNotif.setTexte("Passage du statut en 'En pause' pour la tâche n°"+id);
+        nouvelleNotif.setVu("Non");
+        nouvelleNotif.setTache(tache);
+        nouvelleNotif.setMembre(tache.getMembre());
+        notificationService.ajouterNotification(nouvelleNotif);
         return "redirect:/";
     }
 
@@ -113,6 +141,13 @@ public class TacheController {
         TacheEntity tache = tacheService.recupereTache(id);
         tache.setEtat("En cours");
         tacheService.ajouterTache(tache);
+        NotificationEntity nouvelleNotif = new NotificationEntity();
+        nouvelleNotif.setType("Statut");
+        nouvelleNotif.setTexte("Passage du statut en 'En cours' pour la tâche n°"+id);
+        nouvelleNotif.setVu("Non");
+        nouvelleNotif.setTache(tache);
+        nouvelleNotif.setMembre(tache.getMembre());
+        notificationService.ajouterNotification(nouvelleNotif);
         return "redirect:/";
     }
 
@@ -122,6 +157,13 @@ public class TacheController {
         TacheEntity tache = tacheService.recupereTache(id);
         tache.setEtat("Terminée");
         tacheService.ajouterTache(tache);
+        NotificationEntity nouvelleNotif = new NotificationEntity();
+        nouvelleNotif.setType("Statut");
+        nouvelleNotif.setTexte("Passage du statut en 'Terminée' pour la tâche n°"+id);
+        nouvelleNotif.setVu("Non");
+        nouvelleNotif.setTache(tache);
+        nouvelleNotif.setMembre(tache.getMembre());
+        notificationService.ajouterNotification(nouvelleNotif);
         return "redirect:/";
     }
 
@@ -130,13 +172,28 @@ public class TacheController {
         TacheEntity tache = tacheService.recupereTache(id);
         tache.setEtat("Archivée");
         tacheService.ajouterTache(tache);
+        NotificationEntity nouvelleNotif = new NotificationEntity();
+        nouvelleNotif.setType("Statut");
+        nouvelleNotif.setTexte("Passage du statut en 'Archivée' pour la tâche n°"+id);
+        nouvelleNotif.setVu("Non");
+        nouvelleNotif.setTache(tache);
+        nouvelleNotif.setMembre(tache.getMembre());
+        notificationService.ajouterNotification(nouvelleNotif);
         return "redirect:/";
     }
 
     //Supprime une tache selon son id
     @GetMapping("/supptache/{id}")
     public String supprimerTache(@PathVariable("id") Long id){
+        TacheEntity tache = tacheService.recupereTache(id);
         tacheService.supprimerTache(id); //supprime la tache
+        NotificationEntity nouvelleNotif = new NotificationEntity();
+        nouvelleNotif.setType("Statut");
+        nouvelleNotif.setTexte("Suppression de la tâche n°"+id);
+        nouvelleNotif.setVu("Non");
+        nouvelleNotif.setTache(tache);
+        nouvelleNotif.setMembre(tache.getMembre());
+        notificationService.ajouterNotification(nouvelleNotif);
         return "redirect:/taches"; //redirige vers le fichier jsp
     }
 
@@ -170,4 +227,11 @@ public class TacheController {
         return "redirect:/taches";
     }
 
+    // Liste de toutes les notifs
+    @RequestMapping(value = "/notifs", method = RequestMethod.GET)
+    public String listeNotifs(Model model){
+        List<NotificationEntity> list = notificationService.recupereToutesLesNotifications(); //notifs dans la base de données
+        model.addAttribute("notifs", list); //envoie vers le fichier jsp
+        return "listeNotifs"; //appel du fichier jsp
+    }
 }

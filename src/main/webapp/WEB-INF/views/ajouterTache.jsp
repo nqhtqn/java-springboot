@@ -50,7 +50,7 @@
                             <%--@elvariable id="membres" type="java.util.List"--%>
                             <form:select class="form-select" path="membre.idMembre">
                                 <c:forEach var="membre" items="${membres}" varStatus="loop">
-                                    <form:option value="${membre.idMembre}" label="${membre.nom} ${membre.prenom}" />
+                                    <form:option value="${membre.idMembre}" label="${membre.prenom} ${membre.nom}" />
                                 </c:forEach>
                             </form:select>
                         </div>
@@ -93,9 +93,7 @@
 
             <input type="submit" value="Ajouter une tâche à la liste" class="btn btn-primary">
         </form:form>
-
-
-        <a href="/taches">Retourner à la Liste de tâches</a>
+        <a href="/taches"><button type="button" class="btn btn-secondary">Retour à la liste</button></a>
     </div>
 </body>
 

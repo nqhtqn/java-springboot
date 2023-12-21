@@ -26,7 +26,6 @@ public class NotificationEntity {
     private String texte;
     private String vu;
 
-
     @Override
     public String toString() {
         return "MembreEntity{" +
