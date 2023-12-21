@@ -79,6 +79,7 @@ public class TacheController {
         nouvelleNotif.setType("Nouvelle Tache");
         nouvelleNotif.setTexte("Nouvelle tache mise à jour dans le gestionnaire");
         nouvelleNotif.setVu("Non");
+        nouvelleNotif.setTache(nouvelleTache);
         notificationService.ajouterNotification(nouvelleNotif);
         return "redirect:/taches"; //redirige vers les taches
     }

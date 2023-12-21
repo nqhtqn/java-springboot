@@ -23,6 +23,9 @@
                             <a href="/detail/${tache.id}"> ${tache.getTitre()} - ${tache.getDate_debut()}</a>
                         </td>
                         <td>
+                            ${tache.getImportance()}
+                        </td>
+                        <td>
                             <a href="/modiftache/${tache.id}"><img src="images/edit.png" alt="Modifier" style="padding-right: 20px;"></a>
                             <a href="/supptache/${tache.id}" style="padding-right: 20px;"><img src="images/trash.png" alt="Supprimer" style="padding-right: 20px;"></a>
                         </td>

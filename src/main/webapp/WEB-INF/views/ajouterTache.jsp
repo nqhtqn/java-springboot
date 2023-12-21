@@ -95,7 +95,7 @@
         </form:form>
 
 
-        <a href="/livres">Retourner à la Liste de tâches</a>
+        <a href="/taches">Retourner à la Liste de tâches</a>
     </div>
 </body>
 
