@@ -21,6 +21,8 @@ public class MembreEntity {
     @OneToMany(mappedBy = "membre")
     private List<TacheEntity> tasks;
 
+    @OneToMany(mappedBy = "membre")
+    private List<NotificationEntity> notifs;
 
     @Override
     public String toString() {

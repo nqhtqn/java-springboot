@@ -1,3 +1,4 @@
+<%@ page import="com.example.javaproject.entity.TacheEntity" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -8,10 +9,10 @@
     <body>
         <%@include file="menu.jsp"%>
         <div class="container">
-            <%--@elvariable id="tacheAModifier" type="com.example.javaproject.entity.TacheEntity"--%>
-            <form:form action="/modiftache/${tacheAModifier.id}" method="post" modelAttribute="tacheAModifier">
+            <%--@elvariable id="tache" type="com.example.javaproject.entity.TacheEntity"--%>
+            <form:form action="/modiftache/${tache.id}" method="post" modelAttribute="tache">
                 <div class="mb-3">
-                    <label for="titre" class="form-label">Title: </label>
+                    <label for="titre" class="form-label">Titre: </label>
                     <form:input path="titre" required="true" class="form-control"/>
                 </div>
                 <div class="mb-3">
@@ -20,11 +21,22 @@
                 </div>
                 <div class="mb-3">
                     <label for="importance" class="form-label">Importance: </label>
-                    <form:input path="importance" required="true" class="form-control"/>
+                    <form:select path="importance" class="form-control">
+                        <option value="Haute">Haute</option>
+                        <option value="Moyenne">Moyenne</option>
+                        <option value="Basse">Basse</option>
+                    </form:select>
                 </div>
                 <div class="mb-3">
                     <label for="etat" class="form-label">Etat: </label>
-                    <form:input path="etat" required="true" class="form-control"/>
+                    <form:select path="etat" class="form-control">
+                        <option value="En cours">En cours</option>
+                        <option value="En pause">En pause</option>
+                        <option value="Reportée">Reportée</option>
+                        <option value="Reportée">Terminée</option>
+                        <option value="Reportée">Vérification</option>
+                        <option value="Reportée">Archivée</option>
+                    </form:select>
                 </div>
                 <div class="mb-3 form-check">
                     <input type="checkbox" id="nouveauMembreCheckbox" name="nouveauMembreCheckbox" onchange="afficherFormNouveauMembre()" class="form-check-input"/>
@@ -32,7 +44,7 @@
                 </div>
                 <div class="mb-3">
                     <div id="membreExistantChamps">
-                        <label class="form-label">Author:</label>
+                        <label class="form-label">Membre:</label>
                         <%--@elvariable id="membres" type="java.util.List"--%>
                         <form:select class="form-select" path="membre.idMembre">
                             <c:forEach var="membre" items="${membres}" varStatus="loop">

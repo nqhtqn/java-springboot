@@ -1,8 +1,10 @@
 package com.example.javaproject.controllers;
 
 import com.example.javaproject.entity.MembreEntity;
+import com.example.javaproject.entity.NotificationEntity;
 import com.example.javaproject.entity.TacheEntity;
 import com.example.javaproject.services.MembreService;
+import com.example.javaproject.services.NotificationService;
 import com.example.javaproject.services.TacheService;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +26,14 @@ public class TacheController {
     @Autowired
     private MembreService membreService;
 
+    @Autowired
+    private NotificationService notificationService;
+
     // Liste de toutes les taches
     @RequestMapping(value = "/taches", method = RequestMethod.GET)
     public String listeTaches(Model model){
         List<TacheEntity> list = tacheService.recupereToutesLesTaches(); //taches dans la base de données
+        tacheService.sort(list);
         model.addAttribute("taches", list); //envoie vers le fichier jsp
         return "listeTaches"; //appel du fichier jsp
     }
@@ -51,6 +57,7 @@ public class TacheController {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate dateDebut = LocalDate.now();
         String dateDebutString = dateDebut.format(formatter);
+        NotificationEntity nouvelleNotif = new NotificationEntity();
 
         if (!nom.isEmpty()) { //test si nouveau membre
             MembreEntity nouveauMembre = new MembreEntity(); // crée un nouveau membre
@@ -58,15 +65,21 @@ public class TacheController {
             nouveauMembre.setPrenom(prenom);
             nouveauMembre.setEquipe(equipe);
             membreService.ajouterMembre(nouveauMembre); //ajout membre dans la base
-            nouvelleTache.setMembre(nouveauMembre); // lie le membre et la tache
+            nouvelleTache.setMembre(nouveauMembre);
+            nouvelleNotif.setMembre(nouveauMembre); // lie le membre et la tache
         }else{
             Long idMembre = nouvelleTache.getMembre().getIdMembre(); // recupère le membre
             MembreEntity membre = membreService.recupereMembre(idMembre);
-            nouvelleTache.setMembre(membre); //associe membre à la tache
+            nouvelleTache.setMembre(membre);
+            nouvelleNotif.setMembre(membre); //associe membre à la tache
         }
         nouvelleTache.setEtat("En cours");
         nouvelleTache.setDate_debut(dateDebutString);
         tacheService.ajouterTache(nouvelleTache); //ajoute tache dans la base de données
+        nouvelleNotif.setType("Nouvelle Tache");
+        nouvelleNotif.setTexte("Nouvelle tache mise à jour dans le gestionnaire");
+        nouvelleNotif.setVu("Non");
+        notificationService.ajouterNotification(nouvelleNotif);
         return "redirect:/taches"; //redirige vers les taches
     }
 

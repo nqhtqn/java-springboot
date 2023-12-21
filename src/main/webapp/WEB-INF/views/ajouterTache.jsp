@@ -27,7 +27,11 @@
             </div>
             <div class="mb-3">
                 <label for="importance" class="form-label">Importance: </label>
-                <form:input path="importance" required="true" class="form-control"/>
+                <form:select path="importance" class="form-control">
+                    <option value="Haute">Haute</option>
+                    <option value="Moyenne">Moyenne</option>
+                    <option value="Basse">Basse</option>
+                </form:select>
             </div>
 
             <c:choose>
