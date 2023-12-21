@@ -92,6 +92,47 @@ public class TacheController {
         return "detailTache"; //appel du fichier jsp
     }
 
+    @GetMapping("/cours/{id}")
+    public String enCoursTache(@PathVariable("id") Long id){
+        TacheEntity tache = tacheService.recupereTache(id);
+        tache.setEtat("En cours");
+        tacheService.ajouterTache(tache);
+        return "redirect:/";
+    }
+
+    @GetMapping("/pause/{id}")
+    public String pauseTache(@PathVariable("id") Long id){
+        TacheEntity tache = tacheService.recupereTache(id);
+        tache.setEtat("En pause");
+        tacheService.ajouterTache(tache);
+        return "redirect:/";
+    }
+
+    @GetMapping("/reprendre/{id}")
+    public String reprendreTache(@PathVariable("id") Long id){
+        TacheEntity tache = tacheService.recupereTache(id);
+        tache.setEtat("En cours");
+        tacheService.ajouterTache(tache);
+        return "redirect:/";
+    }
+
+    //Terminer une tache selon son id
+    @GetMapping("/terminer/{id}")
+    public String terminerTache(@PathVariable("id") Long id){
+        TacheEntity tache = tacheService.recupereTache(id);
+        tache.setEtat("Terminée");
+        tacheService.ajouterTache(tache);
+        return "redirect:/";
+    }
+
+    @GetMapping("/archiver/{id}")
+    public String archiverTache(@PathVariable("id") Long id){
+        TacheEntity tache = tacheService.recupereTache(id);
+        tache.setEtat("Archivée");
+        tacheService.ajouterTache(tache);
+        return "redirect:/";
+    }
+
     //Supprime une tache selon son id
     @GetMapping("/supptache/{id}")
     public String supprimerTache(@PathVariable("id") Long id){

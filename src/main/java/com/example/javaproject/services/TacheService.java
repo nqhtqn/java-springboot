@@ -38,4 +38,13 @@ public class TacheService {
             }
         });
     }
+
+    public void sortDate(List<TacheEntity> taches) {
+        taches.sort(new Comparator<TacheEntity>() {
+            @Override
+            public int compare(TacheEntity o1, TacheEntity o2) {
+                return o1.getDate_debut().compareTo(o2.getDate_debut());
+            }
+        });
+    }
 }
