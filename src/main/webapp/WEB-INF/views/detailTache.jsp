@@ -21,21 +21,33 @@
                 <p class="card-text">Importance : ${tache.importance}</p>
                 <p class="card-text">Etat : ${tache.etat}</p>
 
+
+                <c:if test="${tache.getEtat() != 'Archivée'}">
                 <a href="/modiftache/${tache.id}"><button type="button" class="btn btn-outline-primary">Modifier</button></a>
                 <c:if test="${tache.getEtat() == 'A lancer'}">
                     <a href="/cours/${tache.id}"><button type="button" class="btn btn-outline-info">Lancer</button></a>
                 </c:if>
-                <c:if test="${tache.getEtat() != 'En pause'}">
-                    <a href="/pause/${tache.id}"><button type="button" class="btn btn-outline-warning">Pause</button></a>
-                </c:if>
-                <c:if test="${tache.getEtat() == 'En pause'}">
-                    <a href="/reprendre/${tache.id}"><button type="button" class="btn btn-outline-warning">Reprendre</button></a>
-                </c:if>
+                <c:choose>
+                    <c:when test="${tache.getEtat() != 'En pause'}">
+                        <c:choose>
+                            <c:when test="${tache.getEtat() == 'Terminée'}">
+                                <a href="/reprendre/${tache.id}"><button type="button" class="btn btn-outline-warning">Reprendre</button></a>
+                            </c:when>
+                            <c:otherwise>
+                                <a href="/pause/${tache.id}"><button type="button" class="btn btn-outline-warning">Pause</button></a>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:when>
+                    <c:otherwise>
+                        <a href="/reprendre/${tache.id}"><button type="button" class="btn btn-outline-warning">Reprendre</button></a>
+                    </c:otherwise>
+                </c:choose>
                 <c:if test="${tache.getEtat() == 'En cours'}">
                     <a href="/terminer/${tache.id}"><button type="button" class="btn btn-outline-success">Terminer</button></a>
                 </c:if>
                 <c:if test="${tache.getEtat() == 'Terminée'}">
                     <a href="/archiver/${tache.id}"><button type="button" class="btn btn-light">Archiver</button></a>
+                </c:if>
                 </c:if>
                 <a href="/supptache/${tache.id}" style="padding-right: 20px;"><button type="button" class="btn btn-outline-danger">Supprimer</button></a>
 

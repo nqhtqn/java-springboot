@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Controller
 public class HomeController {
@@ -28,6 +30,7 @@ public class HomeController {
     @GetMapping(value = "/")
     public String listeTachesParDate(Model model){
         List<TacheEntity> list = tacheService.recupereToutesLesTaches(); //taches dans la base de données
+        list = list.stream().filter(tache -> !Objects.equals(tache.getEtat(), "Archivée")).collect(Collectors.toList());
         tacheService.sortDate(list);
         model.addAttribute("taches", list); //envoie vers le fichier jsp
         return "home"; //appel du fichier jsp

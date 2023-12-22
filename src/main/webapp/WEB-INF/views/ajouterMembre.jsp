@@ -13,7 +13,7 @@
     <div class="container">
         <h1>Ajouter un membre dans une équipe</h1>
 
-        <%--@elvariable id="nouveauMembre" type="com.example.javaproject.entity.TacheEntity"--%>
+        <%--@elvariable id="nouveauMembre" type="com.example.javaproject.entity.MembreEntity"--%>
         <form:form action="/ajoutmembre" method="post" modelAttribute="nouveauMembre">
             <div class="mb-3">
                 <label for="nom" class="form-label">Nom: </label>

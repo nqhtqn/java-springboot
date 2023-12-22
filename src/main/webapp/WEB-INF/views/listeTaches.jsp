@@ -8,7 +8,7 @@
     <%@include file="menu.jsp"%>
 
     <div class="container">
-        <h1>Liste des tâches</h1>
+        <h1>Liste des tâches par priorité</h1>
         <table class="table table-bordered table-striped">
             <thead class="table-light">
             <tr>
@@ -36,12 +36,21 @@
                         <c:if test="${tache.getEtat() == 'A lancer'}">
                             <a href="/cours/${tache.id}"><button type="button" class="btn btn-outline-info">Lancer</button></a>
                         </c:if>
-                        <c:if test="${tache.getEtat() != 'En pause'}">
-                            <a href="/pause/${tache.id}"><button type="button" class="btn btn-outline-warning">Pause</button></a>
-                        </c:if>
-                        <c:if test="${tache.getEtat() == 'En pause'}">
-                            <a href="/reprendre/${tache.id}"><button type="button" class="btn btn-outline-warning">Reprendre</button></a>
-                        </c:if>
+                        <c:choose>
+                            <c:when test="${tache.getEtat() != 'En pause'}">
+                                <c:choose>
+                                    <c:when test="${tache.getEtat() == 'Terminée'}">
+                                        <a href="/reprendre/${tache.id}"><button type="button" class="btn btn-outline-warning">Reprendre</button></a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <a href="/pause/${tache.id}"><button type="button" class="btn btn-outline-warning">Pause</button></a>
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:when>
+                            <c:otherwise>
+                                <a href="/reprendre/${tache.id}"><button type="button" class="btn btn-outline-warning">Reprendre</button></a>
+                            </c:otherwise>
+                        </c:choose>
                         <c:if test="${tache.getEtat() == 'En cours'}">
                             <a href="/terminer/${tache.id}"><button type="button" class="btn btn-outline-success">Terminer</button></a>
                         </c:if>

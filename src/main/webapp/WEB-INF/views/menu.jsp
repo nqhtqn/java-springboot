@@ -15,10 +15,13 @@
                     <a class="nav-link" href="/ajoutmembre">Ajouter un membre</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/notifs">Notifictions</a>
+                    <a class="nav-link" href="/notifs">Notifications</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/rapport">Rapport Individuel</a>
+                    <a class="nav-link" href="/rapportList">Rapport Individuel</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/archive">Archives</a>
                 </li>
             </ul>
         </div>

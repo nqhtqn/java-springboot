@@ -1,10 +1,13 @@
 package com.example.javaproject.services;
 
+import com.example.javaproject.entity.MembreEntity;
 import com.example.javaproject.entity.TacheEntity;
 import com.example.javaproject.repositories.TacheRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.management.Query;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -22,6 +25,19 @@ public class TacheService {
     public TacheEntity recupereTache(Long id){
         return tacheRepository.findById(id).orElse(null);
     }
+
+    public List<TacheEntity> recupereTachesParMembre(MembreEntity membre) {
+
+        List<TacheEntity> listeTaches = recupereToutesLesTaches();
+        List<TacheEntity> listeTachesDuMembre = new ArrayList<>();
+        for (TacheEntity tache : listeTaches) {
+            if (tache.getMembre().equals(membre)) {
+                listeTachesDuMembre.add(tache);
+            }
+        }
+        return listeTachesDuMembre;
+    }
+
     public void ajouterTache(TacheEntity tache){
         tacheRepository.save(tache);
     }

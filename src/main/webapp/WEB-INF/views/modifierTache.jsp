@@ -8,6 +8,7 @@
 
     <body>
         <%@include file="menu.jsp"%>
+        <h2>Modification de la tache n°${tache.id}</h2>
         <div class="container">
             <%--@elvariable id="tache" type="com.example.javaproject.entity.TacheEntity"--%>
             <form:form action="/modiftache/${tache.id}" method="post" modelAttribute="tache">
@@ -85,9 +86,10 @@
                         }
                     }
                 </script>
+                <form:hidden path="date_debut" required="true" class="form-control"/>
                 <input type="submit" value="Modifier la tâche" class="btn btn-primary">
             </form:form>
-            <a href="/livres">Retourner à la Liste de tâches</a>
+                <a href="/taches"><button type="button" class="btn btn-secondary">Retour à la liste</button></a>
         </div>
     </body>
 

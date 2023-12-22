@@ -9,7 +9,7 @@
 
 <div class="container"><br>
     <h1>Bienvenue sur votre système de gestion de tâche</h1><br>
-    <a href="/ajouttache" class="btn btn-primary">Ajouter une nouvelle tache</a>  <a href="/rapport" class="btn btn-secondary">Rapport Individuel</a><br><br>
+    <a href="/ajouttache" class="btn btn-primary">Ajouter une nouvelle tache</a>  <a href="/rapportList" class="btn btn-secondary">Rapport Individuel</a><br><br>
     <h4>Tâches récentes</h4>
     <table class="table table-bordered table-striped">
         <thead class="table-light">
@@ -38,12 +38,21 @@
                     <c:if test="${tache.getEtat() == 'A lancer'}">
                         <a href="/cours/${tache.id}"><button type="button" class="btn btn-outline-info">Lancer</button></a>
                     </c:if>
-                    <c:if test="${tache.getEtat() != 'En pause'}">
-                        <a href="/pause/${tache.id}"><button type="button" class="btn btn-outline-warning">Pause</button></a>
-                    </c:if>
-                    <c:if test="${tache.getEtat() == 'En pause'}">
+                    <c:choose>
+                    <c:when test="${tache.getEtat() != 'En pause'}">
+                        <c:choose>
+                            <c:when test="${tache.getEtat() == 'Terminée'}">
+                                <a href="/reprendre/${tache.id}"><button type="button" class="btn btn-outline-warning">Reprendre</button></a>
+                            </c:when>
+                            <c:otherwise>
+                                <a href="/pause/${tache.id}"><button type="button" class="btn btn-outline-warning">Pause</button></a>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:when>
+                    <c:otherwise>
                         <a href="/reprendre/${tache.id}"><button type="button" class="btn btn-outline-warning">Reprendre</button></a>
-                    </c:if>
+                    </c:otherwise>
+                    </c:choose>
                     <c:if test="${tache.getEtat() == 'En cours'}">
                         <a href="/terminer/${tache.id}"><button type="button" class="btn btn-outline-success">Terminer</button></a>
                     </c:if>

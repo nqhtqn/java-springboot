@@ -15,13 +15,8 @@ public class NotificationEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idNotif;
 
-    @ManyToOne
-    @JoinColumn( name="idMembre" )
-    private MembreEntity membre;
-    @ManyToOne
-    @JoinColumn( name="idTache" )
-    private TacheEntity tache;
-
+    private Long membre;
+    private String tache;
     private String type;
     private String texte;
     private String vu;
