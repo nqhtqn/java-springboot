@@ -50,7 +50,7 @@ public class TacheService {
         taches.sort(new Comparator<TacheEntity>() {
             @Override
             public int compare(TacheEntity o1, TacheEntity o2) {
-                return o1.getImportance().compareTo(o2.getImportance());
+                return o2.getImportance().compareTo(o1.getImportance());
             }
         });
     }
